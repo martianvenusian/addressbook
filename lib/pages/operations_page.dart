@@ -50,7 +50,7 @@ class _OperationsPageState extends State<OperationsPage> {
         country: _country,
       );
 
-      await database.setAddress(address);
+      await database.setAddress(address: address);
     }
   }
 
