@@ -8,8 +8,8 @@ import 'package:meta/meta.dart';
 
 abstract class Database {
   Future<void> setAddress(Address address);
-  Future<DocumentSnapshot> getAddress({@required String addressId});
   Future<void> deleteAddress({@required String addressId});
+  Future<DocumentSnapshot> getAddress({@required String addressId});
   Stream<Address> addressStream({@required String addressId});
   Stream<List<Address>> addressesStream(
       {@required String feild, @required String value});
@@ -28,11 +28,10 @@ class FirestoreDatabase implements Database {
       );
 
   @override
-  Future<void> deleteAddress(String addressId) async {
-    return await _service.deleteData(
-      path: APIPath.address(addressId),
-    );
-  }
+  Future<void> deleteAddress({@required String addressId}) async =>
+      await _service.deleteData(
+        path: APIPath.address(addressId),
+      );
 
   @override
   Future<DocumentSnapshot> getAddress({@required String addressId}) async {
